@@ -16,7 +16,8 @@
 		D5888BB919E34AB400E9CE99 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5888BB819E34AB400E9CE99 /* Tweet.swift */; };
 		D5888BBB19E34AE200E9CE99 /* HomeTimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5888BBA19E34AE200E9CE99 /* HomeTimeLineViewController.swift */; };
 		D5888BBD19E34C0300E9CE99 /* tweet.json in Resources */ = {isa = PBXBuildFile; fileRef = D5888BBC19E34C0300E9CE99 /* tweet.json */; };
-		D5888BC019E34E8600E9CE99 /* README in Resources */ = {isa = PBXBuildFile; fileRef = D5888BBE19E34E8600E9CE99 /* README */; };
+		D5888BC419E3502D00E9CE99 /* README in Resources */ = {isa = PBXBuildFile; fileRef = D5888BC219E3502D00E9CE99 /* README */; };
+		D5888BC519E3502D00E9CE99 /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5888BC319E3502D00E9CE99 /* TemplateIcon2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +44,8 @@
 		D5888BB819E34AB400E9CE99 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		D5888BBA19E34AE200E9CE99 /* HomeTimeLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTimeLineViewController.swift; sourceTree = "<group>"; };
 		D5888BBC19E34C0300E9CE99 /* tweet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tweet.json; path = ../../../../iOSacc/TwitterClone/TwitterClone/tweet.json; sourceTree = "<group>"; };
-		D5888BBE19E34E8600E9CE99 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README; path = TwitterClone/README; sourceTree = "<group>"; };
+		D5888BC219E3502D00E9CE99 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		D5888BC319E3502D00E9CE99 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +69,8 @@
 		D5888B8419E34A7700E9CE99 = {
 			isa = PBXGroup;
 			children = (
-				D5888BBE19E34E8600E9CE99 /* README */,
+				D5888BC219E3502D00E9CE99 /* README */,
+				D5888BC319E3502D00E9CE99 /* TemplateIcon2x.png */,
 				D5888B8F19E34A7700E9CE99 /* TwitterClone */,
 				D5888BA819E34A7800E9CE99 /* TwitterCloneTests */,
 				D5888B8E19E34A7700E9CE99 /* Products */,
@@ -228,8 +231,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5888BC019E34E8600E9CE99 /* README in Resources */,
+				D5888BC419E3502D00E9CE99 /* README in Resources */,
 				D5888B9B19E34A7700E9CE99 /* Main.storyboard in Resources */,
+				D5888BC519E3502D00E9CE99 /* TemplateIcon2x.png in Resources */,
 				D5888BA019E34A7700E9CE99 /* LaunchScreen.xib in Resources */,
 				D5888B9D19E34A7700E9CE99 /* Images.xcassets in Resources */,
 				D5888BBD19E34C0300E9CE99 /* tweet.json in Resources */,
