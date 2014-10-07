@@ -11,8 +11,8 @@ import Foundation
 class Tweet {
     var text: String
     
-    init(tweetDictionary: NSDictionary) {
-        self.text = tweetDictionary["text"] as String
+    init(twitterDictionary: NSDictionary) {
+        self.text = twitterDictionary["text"] as String
     }
     
     class func parseJSONDataIntoTweets(rawJSONData : NSData) -> [Tweet]? {
@@ -23,7 +23,7 @@ class Tweet {
             
             for JSONDictionary in JSONArray {
                 if let tweetDictionary = JSONDictionary as? NSDictionary {
-                    var newTweet = Tweet(tweetDictionary: tweetDictionary)
+                    var newTweet = Tweet(twitterDictionary: tweetDictionary)
                     tweets.append(newTweet)
                 }
             }

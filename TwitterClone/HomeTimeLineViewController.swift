@@ -26,7 +26,7 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource {
             println(tweets?.count)
         }
         
-        //self.tableView.dataSource = self
+        self.tableView.dataSource = self
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,16 +48,4 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
-    
 }
