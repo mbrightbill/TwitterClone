@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home Time Line View Controller-->
@@ -16,16 +17,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XMK-Ei-2jY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XMK-Ei-2jY">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TWEET_CELL" id="jPY-HX-cDw">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TWEET_CELL" rowHeight="71" id="jPY-HX-cDw" customClass="HomeTimeLineTableViewCell" customModule="TwitterClone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jPY-HX-cDw" id="tEu-dd-bro">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y6x-h0-YjG">
+                                                    <rect key="frame" x="8" y="11" width="52" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="JoX-0A-eNE"/>
+                                                        <constraint firstAttribute="width" constant="52" id="bNa-t6-NiR"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgA-dH-CBo">
+                                                    <rect key="frame" x="94" y="11" width="465" height="49"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="y6x-h0-YjG" firstAttribute="leading" secondItem="tEu-dd-bro" secondAttribute="leadingMargin" id="F1K-lZ-vcN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="YgA-dH-CBo" secondAttribute="trailing" constant="33" id="NxS-Tf-K8c"/>
+                                                <constraint firstItem="y6x-h0-YjG" firstAttribute="top" secondItem="tEu-dd-bro" secondAttribute="topMargin" constant="3" id="RfR-vH-YZX"/>
+                                                <constraint firstItem="YgA-dH-CBo" firstAttribute="leading" secondItem="y6x-h0-YjG" secondAttribute="trailing" constant="34" id="UEo-uW-6NA"/>
+                                                <constraint firstItem="YgA-dH-CBo" firstAttribute="top" secondItem="tEu-dd-bro" secondAttribute="topMargin" constant="3" id="q9L-Lg-WGn"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="YgA-dH-CBo" secondAttribute="bottom" constant="3" id="yJn-zh-vfi"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="TableViewCellImageView" destination="tEu-dd-bro" id="4qj-9z-wnr"/>
+                                            <outlet property="cellTextLabel" destination="YgA-dH-CBo" id="6np-3G-3tD"/>
+                                            <outlet property="tableViewCellImageView" destination="y6x-h0-YjG" id="ZwX-Xe-Gbu"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -36,9 +65,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XMK-Ei-2jY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="4eb-Ir-1XF"/>
+                            <constraint firstItem="XMK-Ei-2jY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KJe-mR-J9S"/>
+                            <constraint firstAttribute="trailing" secondItem="XMK-Ei-2jY" secondAttribute="trailing" id="TCr-cZ-Sg6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XMK-Ei-2jY" secondAttribute="bottom" id="UGj-2l-5is"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XMK-Ei-2jY" secondAttribute="bottom" id="YQb-Ze-YBJ"/>
                             <constraint firstAttribute="trailing" secondItem="XMK-Ei-2jY" secondAttribute="trailing" id="e5N-1O-bDG"/>
                             <constraint firstItem="XMK-Ei-2jY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nVL-kh-VGR"/>
+                            <constraint firstItem="XMK-Ei-2jY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zae-TX-pMZ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -47,6 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="135"/>
         </scene>
     </scenes>
 </document>

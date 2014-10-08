@@ -18,6 +18,7 @@
 		D5888BBD19E34C0300E9CE99 /* tweet.json in Resources */ = {isa = PBXBuildFile; fileRef = D5888BBC19E34C0300E9CE99 /* tweet.json */; };
 		D5888BC419E3502D00E9CE99 /* README in Resources */ = {isa = PBXBuildFile; fileRef = D5888BC219E3502D00E9CE99 /* README */; };
 		D5888BC519E3502D00E9CE99 /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D5888BC319E3502D00E9CE99 /* TemplateIcon2x.png */; };
+		D5888BCF19E493AE00E9CE99 /* HomeTimeLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5888BCE19E493AE00E9CE99 /* HomeTimeLineTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		D5888BBC19E34C0300E9CE99 /* tweet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tweet.json; path = ../../../../iOSacc/TwitterClone/TwitterClone/tweet.json; sourceTree = "<group>"; };
 		D5888BC219E3502D00E9CE99 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		D5888BC319E3502D00E9CE99 /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
+		D5888BCE19E493AE00E9CE99 /* HomeTimeLineTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTimeLineTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				D5888BB519E34A8500E9CE99 /* Model Layer */,
 				D5888B9919E34A7700E9CE99 /* Main.storyboard */,
 				D5888BB819E34AB400E9CE99 /* Tweet.swift */,
+				D5888BCE19E493AE00E9CE99 /* HomeTimeLineTableViewCell.swift */,
 				D5888BBC19E34C0300E9CE99 /* tweet.json */,
 				D5888B9C19E34A7700E9CE99 /* Images.xcassets */,
 				D5888B9E19E34A7700E9CE99 /* LaunchScreen.xib */,
@@ -257,6 +260,7 @@
 				D5888BBB19E34AE200E9CE99 /* HomeTimeLineViewController.swift in Sources */,
 				D5888BB919E34AB400E9CE99 /* Tweet.swift in Sources */,
 				D5888B9319E34A7700E9CE99 /* AppDelegate.swift in Sources */,
+				D5888BCF19E493AE00E9CE99 /* HomeTimeLineTableViewCell.swift in Sources */,
 				D5888B9619E34A7700E9CE99 /* TwitterClone.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

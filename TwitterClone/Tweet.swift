@@ -7,12 +7,28 @@
 //
 
 import Foundation
+import UIKit
 
 class Tweet {
     var text: String
     
+    var userDictionary: NSDictionary
+    
+    var tweetImageURL : NSURL
+    
+    var tweetImage : UIImage
+    
     init(twitterDictionary: NSDictionary) {
         self.text = twitterDictionary["text"] as String
+        
+        self.userDictionary = twitterDictionary["user"] as NSDictionary
+        
+        let tweetImageString = userDictionary["profile_image_url"] as String
+        
+        self.tweetImageURL = NSURL(string: tweetImageString)
+        
+        self.tweetImage = UIImage(data: NSData(contentsOfURL: tweetImageURL))
+        
     }
     
     class func parseJSONDataIntoTweets(rawJSONData : NSData) -> [Tweet]? {
