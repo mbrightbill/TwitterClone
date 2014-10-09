@@ -11,7 +11,7 @@ import Accounts
 // social is for SLRequest
 import Social
 
-class HomeTimeLineViewController: UIViewController, UITableViewDataSource {
+class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UIApplicationDelegate {
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -19,53 +19,27 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource {
     
     var twitterAccount : ACAccount?
     
+    var networkController : NetworkController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.dataSource = self
         
-        let accountStore = ACAccountStore()
-        let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
-        // asynchronous call -- not on main thread
-        accountStore.requestAccessToAccountsWithType(accountType, options: nil) { (granted : Bool, error : NSError!) -> Void in
-            if granted {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        self.networkController = appDelegate.networkController
+        
+        tableView.estimatedRowHeight = 71.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.networkController.fetchHometimeLine { (errorDescription : String?, tweets : [Tweet]?) -> (Void) in
+            if errorDescription != nil {
                 
-                let accounts = accountStore.accountsWithAccountType(accountType)
-                self.twitterAccount = accounts.first as ACAccount?
-                // setup our twitter request
-                let url = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
-                let twitterRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: url, parameters: nil)
-                twitterRequest.account = self.twitterAccount
-                twitterRequest.performRequestWithHandler({ (data, httpResponse, error) -> Void in
-                    switch httpResponse.statusCode {
-                    case 200...299:
-                        self.tweets = Tweet.parseJSONDataIntoTweets(data)
-                        println(self.tweets?.count)
-                        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                             self.tableView.reloadData()
-                        })
-                        // right here, we are on a background queue aka thread
-                    case 400...499:
-                        println("this is the clients fault")
-                    case 500...599:
-                        println("this is the servers fault")
-                    default:
-                        println("Something bad happened")
-                    }
-                })
+            } else {
+                self.tweets = tweets
+                self.tableView.reloadData()
             }
         }
-        
-//        if let path = NSBundle.mainBundle().pathForResource("tweet", ofType: "json") {
-//            var error : NSError?
-//            let jsonData = NSData(contentsOfFile: path)
-//            
-//            self.tweets = Tweet.parseJSONDataIntoTweets(jsonData)
-//            
-//            println(tweets?.count)
-//        }
-        
-    
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,7 +56,17 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource {
         cell.tableViewCellImageView.image = tweet?.tweetImage
         
         cell.cellTextLabel?.text = tweet?.text
+        cell.tweetCellUserName.text = tweet?.tweetAccountName
+        
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowTweet" {
+            let indexPath = self.tableView.indexPathForSelectedRow()
+            var singleTweetViewController = segue.destinationViewController as SingleTweetViewController
+            singleTweetViewController.selectedTweet = tweets?[indexPath!.row]
+        }
     }
     
     

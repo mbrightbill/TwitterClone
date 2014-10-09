@@ -14,6 +14,8 @@ class HomeTimeLineTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cellTextLabel: UILabel!
     
+    @IBOutlet weak var tweetCellUserName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
