@@ -1,76 +1,78 @@
 //
-//  HomeTimeLineViewController.swift
+//  UserTimeLineViewController.swift
 //  TwitterClone
 //
-//  Created by Matthew Brightbill on 10/6/14.
+//  Created by Matthew Brightbill on 10/9/14.
 //  Copyright (c) 2014 Matthew Brightbill. All rights reserved.
 //
 
 import UIKit
 import Accounts
-// social is for SLRequest
 import Social
 
-class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UIApplicationDelegate, UITableViewDelegate {
+class UserTimeLineViewController: UIViewController, UITableViewDataSource, UIApplicationDelegate, UITableViewDelegate {
 
-    
-    @IBOutlet weak var tableView: UITableView!
-
-    var tweets : [Tweet]?
-    
-    var twitterAccount : ACAccount?
-    
     var networkController : NetworkController!
     
     var refreshControl : UIRefreshControl!
     
+    var tweets : [Tweet]?
+    
+    @IBOutlet weak var userTimeLineTableView: UITableView!
+    
+    var selectedTweet2 : Tweet?
+    var userScreenName : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        self.userTimeLineTableView.dataSource = self
+        self.userTimeLineTableView.delegate = self
         
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         self.networkController = appDelegate.networkController
         
-        self.networkController.fetchHometimeLine { (errorDescription, tweets) -> (Void) in
+        self.userScreenName = selectedTweet2?.userScreenName
+        
+        self.userTimeLineTableView.registerNib(UINib(nibName: "TweetCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "TWEET_CELL")
+        
+        self.networkController.fetchUserTimeLine(self.userScreenName) { (errorDescription, tweets) -> (Void) in
             if errorDescription != nil {
+                println("FETCH ERROR.")
                 println(errorDescription?.debugDescription)
             } else {
                 self.tweets = tweets
-                
-                self.tableView.reloadData()
+                println("fetch complete, time to reload")
+                self.userTimeLineTableView.reloadData()
             }
         }
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.backgroundColor = UIColor.blueColor()
-        self.refreshControl.tintColor = UIColor.whiteColor()
+        self.refreshControl?.tintColor = UIColor.whiteColor()
         self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(refreshControl)
-
+        self.userTimeLineTableView.addSubview(refreshControl)
         
-        self.tableView.registerNib(UINib(nibName: "TweetCell", bundle: NSBundle.mainBundle()), forCellReuseIdentifier: "TWEET_CELL")
-        tableView.estimatedRowHeight = 71.0
-        tableView.rowHeight = UITableViewAutomaticDimension
+        userTimeLineTableView.estimatedRowHeight = 71.0
+        userTimeLineTableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func refresh() {
-        self.networkController.fetchHometimeLine { (errorDescription : String?, tweets : [Tweet]?) -> (Void) in
+        self.networkController.fetchUserTimeLine(self.userScreenName) { (errorDescription, tweets) -> (Void) in
             if errorDescription != nil {
                 println(errorDescription?.debugDescription)
             } else {
                 self.tweets = tweets
                 
-                self.tableView.reloadData()
-                self.refreshControl.endRefreshing()
+                self.userTimeLineTableView.reloadData()
+                self.refreshControl?.endRefreshing()
             }
         }
     }
     
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.tweets != nil {
+            println(self.tweets!.count)
             return self.tweets!.count
         } else {
             return 0
@@ -78,34 +80,28 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TWEET_CELL", forIndexPath: indexPath) as TweetCell
+        let cell = userTimeLineTableView.dequeueReusableCellWithIdentifier("TWEET_CELL", forIndexPath: indexPath) as TweetCell
         let tweet = self.tweets?[indexPath.row]
         
         if tweet?.tweetImage != nil {
             cell.tweetCellImageView.image = tweet?.tweetImage
+            //cell.tableViewCellImageView.image = tweet?.tweetImage
         } else {
             self.networkController.downloadUserImageForTweet(tweet!, completionHandler: { (image) -> (Void) in
-                let cellForImage = self.tableView.cellForRowAtIndexPath(indexPath) as TweetCell?
+                let cellForImage = self.userTimeLineTableView.cellForRowAtIndexPath(indexPath) as TweetCell?
                 cellForImage?.tweetCellImageView.image = image
+                //cellForImage?.tableViewCellImageView.image = image
             })
         }
-
         cell.tweetCellLabel?.text = tweet?.text
-    
+        //cell.cellTextLabel?.text = tweet?.text
+        
+        
         return cell
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "ShowTweet" {
-//            let indexPath = self.tableView.indexPathForSelectedRow()
-//            var singleTweetViewController = segue.destinationViewController as SingleTweetViewController
-//            singleTweetViewController.selectedTweet = tweets?[indexPath!.row]
-//        }
-//    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        userTimeLineTableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let singleTweetVC = self.storyboard?.instantiateViewControllerWithIdentifier("singleTweetVC") as SingleTweetViewController
         singleTweetVC.selectedTweet = tweets?[indexPath.row]
@@ -113,8 +109,11 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
     }
     
     
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
 }

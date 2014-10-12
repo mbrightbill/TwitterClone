@@ -6,19 +6,21 @@
 //  Copyright (c) 2014 Matthew Brightbill. All rights reserved.
 //
 
-import Foundation
+// UIKit imports Foundation
 import UIKit
 
 class Tweet {
-    var text: String
+    var text : String
     var userDictionary: NSDictionary
     var tweetImageURL : NSURL
     var tweetImage : UIImage
+    var tweetImageString : String
     let tweetAccountName : String
     var retweetCountInt : Int
     var retweetCountString : String
     var favoriteCountInt : Int
     var favoriteCountString : String
+    var userScreenName : String
     
     init(twitterDictionary: NSDictionary) {
         
@@ -26,12 +28,12 @@ class Tweet {
         
         self.userDictionary = twitterDictionary["user"] as NSDictionary
         
-        let tweetImageString = userDictionary["profile_image_url"] as String
+        self.tweetImageString = userDictionary["profile_image_url"] as String
         
         self.tweetAccountName = userDictionary["name"] as String
+        self.userScreenName = userDictionary["screen_name"] as String
         
         self.tweetImageURL = NSURL(string: tweetImageString)
-        
         self.tweetImage = UIImage(data: NSData(contentsOfURL: tweetImageURL))
         
         self.retweetCountInt = twitterDictionary["retweet_count"] as Int

@@ -18,6 +18,8 @@ class SingleTweetViewController: UIViewController {
     
     var selectedTweet : Tweet!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +34,14 @@ class SingleTweetViewController: UIViewController {
         self.retweetCountLabel.text = selectedTweet.retweetCountString
         self.favoritesCountLabel.text = selectedTweet.favoriteCountString
     }
+    
+    @IBAction func photoButtonPressed(sender: AnyObject) {
+        let userTimeLineVCConstant = self.storyboard?.instantiateViewControllerWithIdentifier("userTimeLineVC") as UserTimeLineViewController
+        userTimeLineVCConstant.selectedTweet2 = self.selectedTweet
+        self.navigationController?.pushViewController(userTimeLineVCConstant, animated: true)
+                
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

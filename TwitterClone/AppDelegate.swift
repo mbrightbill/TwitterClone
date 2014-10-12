@@ -16,8 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let networkController = NetworkController()
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // in order to make a nav controller in code
+        // let rootViewController = window?.rootViewController
+        // let navController = UINavigationController(rootViewController: rootViewController)
+        // window?.rootViewController = navController
+        
         // Override point for customization after application launch.
         return true
     }

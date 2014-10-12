@@ -1,20 +1,18 @@
 //
-//  HomeTimeLineTableViewCell.swift
+//  TweetCell.swift
 //  TwitterClone
 //
-//  Created by Matthew Brightbill on 10/7/14.
+//  Created by Matthew Brightbill on 10/10/14.
 //  Copyright (c) 2014 Matthew Brightbill. All rights reserved.
 //
 
 import UIKit
 
-class HomeTimeLineTableViewCell: UITableViewCell {
+class TweetCell: UITableViewCell {
 
-    @IBOutlet weak var tableViewCellImageView: UIImageView!
+    @IBOutlet weak var tweetCellLabel: UILabel!
     
-    @IBOutlet weak var cellTextLabel: UILabel!
-    
-    @IBOutlet weak var tweetCellUserName: UILabel!
+    @IBOutlet weak var tweetCellImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
