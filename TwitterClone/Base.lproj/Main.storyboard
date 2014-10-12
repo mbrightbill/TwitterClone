@@ -188,26 +188,39 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="5QX-NH-0TL"/>
-                                    <constraint firstAttribute="height" constant="600" id="fkh-4G-SjD"/>
+                                    <constraint firstAttribute="height" constant="600" id="Nkd-0H-Lx5"/>
+                                    <constraint firstAttribute="width" constant="600" id="OBB-Zg-tWE"/>
                                 </constraints>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="JmQ-26-nph">
                                     <rect key="frame" x="0.0" y="64" width="600" height="100"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gW2-W2-MsW">
+                                            <rect key="frame" x="8" y="8" width="70" height="70"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPq-ef-k0r">
+                                            <rect key="frame" x="103" y="25" width="148" height="35"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.81730916539999998" green="1" blue="0.97314690260000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="9PU-7I-fMi" secondAttribute="trailing" constant="-16" id="5TH-hG-kES"/>
-                            <constraint firstItem="yQt-Uy-ASF" firstAttribute="top" secondItem="9PU-7I-fMi" secondAttribute="bottom" id="UAW-JX-23R"/>
-                            <constraint firstItem="9PU-7I-fMi" firstAttribute="top" secondItem="U6w-L2-lnE" secondAttribute="topMargin" id="eL0-vH-Z4r"/>
-                            <constraint firstItem="9PU-7I-fMi" firstAttribute="leading" secondItem="U6w-L2-lnE" secondAttribute="leadingMargin" constant="-16" id="ptx-Tw-afh"/>
+                            <constraint firstItem="9PU-7I-fMi" firstAttribute="leading" secondItem="U6w-L2-lnE" secondAttribute="leadingMargin" constant="-16" id="Pb5-jz-fjS"/>
+                            <constraint firstItem="yQt-Uy-ASF" firstAttribute="top" secondItem="9PU-7I-fMi" secondAttribute="bottom" id="TlR-FI-EjV"/>
+                            <constraint firstItem="9PU-7I-fMi" firstAttribute="top" secondItem="U6w-L2-lnE" secondAttribute="topMargin" id="i4D-7F-MtP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9PU-7I-fMi" secondAttribute="trailing" constant="-16" id="qpu-2r-KdQ"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="userTimeLineHeaderImageView" destination="gW2-W2-MsW" id="RvJ-Ow-Dyc"/>
+                        <outlet property="userTimeLineHeaderLabel" destination="qPq-ef-k0r" id="SEL-zR-yEO"/>
                         <outlet property="userTimeLineTableView" destination="9PU-7I-fMi" id="uvj-4H-8fA"/>
                     </connections>
                 </viewController>

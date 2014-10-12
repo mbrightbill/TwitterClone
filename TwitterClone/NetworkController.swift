@@ -40,7 +40,7 @@ class NetworkController {
                         NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                             completionHandler(errorDescription: nil, tweets: tweets)
                         })
-                        // right here, we are on a background queue aka thread
+                        // below, we are on a background queue aka thread
                     case 400...499:
                         println("this is the clients fault")
                         println(httpResponse.statusCode)

@@ -19,6 +19,8 @@ class UserTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
     var tweets : [Tweet]?
     
     @IBOutlet weak var userTimeLineTableView: UITableView!
+    @IBOutlet weak var userTimeLineHeaderImageView: UIImageView!
+    @IBOutlet weak var userTimeLineHeaderLabel: UILabel!
     
     var selectedTweet2 : Tweet?
     var userScreenName : String?
@@ -47,6 +49,7 @@ class UserTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
             }
         }
         
+        
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.backgroundColor = UIColor.blueColor()
         self.refreshControl?.tintColor = UIColor.whiteColor()
@@ -55,6 +58,14 @@ class UserTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
         
         userTimeLineTableView.estimatedRowHeight = 71.0
         userTimeLineTableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+       
+        if self.selectedTweet2 != nil {
+            self.userTimeLineHeaderImageView.image = self.selectedTweet2?.tweetImage
+        }
+        self.userTimeLineHeaderLabel.text = self.selectedTweet2?.tweetAccountName
     }
     
     func refresh() {

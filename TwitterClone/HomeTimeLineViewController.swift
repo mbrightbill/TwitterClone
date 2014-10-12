@@ -44,8 +44,9 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
         }
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.backgroundColor = UIColor.blueColor()
-        self.refreshControl.tintColor = UIColor.whiteColor()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
+        //self.refreshControl?.backgroundColor = UIColor.blueColor()
+        //self.refreshControl.tintColor = UIColor.whiteColor()
         self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl)
 
