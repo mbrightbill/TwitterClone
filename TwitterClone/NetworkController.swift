@@ -98,11 +98,11 @@ class NetworkController {
         
         self.imageQueue.addOperationWithBlock { () -> Void in
             let url = NSURL(string: tweet.tweetImageString)
-            let imageData = NSData(contentsOfURL: url) // network call
-            var avatarImage = UIImage(data: imageData)
-            tweet.tweetImage = avatarImage
+            let imageData = NSData(contentsOfURL: url!) // network call
+            var avatarImage = UIImage(data: imageData!)
+            tweet.tweetImage = avatarImage!
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                completionHandler(image: avatarImage)
+                completionHandler(image: avatarImage!)
             })
         }
         

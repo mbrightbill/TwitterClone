@@ -33,8 +33,8 @@ class Tweet {
         self.tweetAccountName = userDictionary["name"] as String
         self.userScreenName = userDictionary["screen_name"] as String
         
-        self.tweetImageURL = NSURL(string: tweetImageString)
-        self.tweetImage = UIImage(data: NSData(contentsOfURL: tweetImageURL))
+        self.tweetImageURL = NSURL(string: tweetImageString)!
+        self.tweetImage = UIImage(data: NSData(contentsOfURL: tweetImageURL)!)!
         
         self.retweetCountInt = twitterDictionary["retweet_count"] as Int
         self.retweetCountString = String(retweetCountInt)

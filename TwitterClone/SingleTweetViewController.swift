@@ -18,8 +18,6 @@ class SingleTweetViewController: UIViewController {
     
     var selectedTweet : Tweet!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,15 +34,9 @@ class SingleTweetViewController: UIViewController {
     }
     
     @IBAction func photoButtonPressed(sender: AnyObject) {
-        let userTimeLineVCConstant = self.storyboard?.instantiateViewControllerWithIdentifier("userTimeLineVC") as UserTimeLineViewController
-        userTimeLineVCConstant.selectedTweet2 = self.selectedTweet
-        self.navigationController?.pushViewController(userTimeLineVCConstant, animated: true)
+        let userTimeLineVC = self.storyboard?.instantiateViewControllerWithIdentifier("userTimeLineVC") as UserTimeLineViewController
+        userTimeLineVC.selectedTweet2 = self.selectedTweet
+        self.navigationController?.pushViewController(userTimeLineVC, animated: true)
                 
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

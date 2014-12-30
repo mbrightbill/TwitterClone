@@ -118,13 +118,4 @@ class UserTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
         singleTweetVC.selectedTweet = tweets?[indexPath.row]
         self.navigationController?.pushViewController(singleTweetVC, animated: true)
     }
-    
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
 }
