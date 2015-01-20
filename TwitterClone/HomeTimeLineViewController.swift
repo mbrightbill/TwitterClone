@@ -12,7 +12,6 @@ import Accounts
 import Social
 
 class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UIApplicationDelegate, UITableViewDelegate {
-
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -45,8 +44,6 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
-        //self.refreshControl?.backgroundColor = UIColor.blueColor()
-        //self.refreshControl.tintColor = UIColor.whiteColor()
         self.refreshControl?.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl)
 
@@ -105,10 +102,5 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
         singleTweetVC.selectedTweet = tweets?[indexPath.row]
         self.navigationController?.pushViewController(singleTweetVC, animated: true)
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
 }

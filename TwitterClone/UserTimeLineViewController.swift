@@ -96,18 +96,14 @@ class UserTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
         
         if tweet?.tweetImage != nil {
             cell.tweetCellImageView.image = tweet?.tweetImage
-            //cell.tableViewCellImageView.image = tweet?.tweetImage
         } else {
             self.networkController.downloadUserImageForTweet(tweet!, completionHandler: { (image) -> (Void) in
                 let cellForImage = self.userTimeLineTableView.cellForRowAtIndexPath(indexPath) as TweetCell?
                 cellForImage?.tweetCellImageView.image = image
-                //cellForImage?.tableViewCellImageView.image = image
             })
         }
         cell.tweetCellLabel?.text = tweet?.text
-        //cell.cellTextLabel?.text = tweet?.text
-        
-        
+
         return cell
     }
     

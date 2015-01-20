@@ -22,6 +22,7 @@ class NetworkController {
     func fetchHometimeLine( completionHandler : (errorDescription : String?, tweets : [Tweet]?) -> (Void)) {
         let accountStore = ACAccountStore()
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
+        
         // asynchronous call -- not on main thread
         accountStore.requestAccessToAccountsWithType(accountType, options: nil) { (granted : Bool, error : NSError!) -> Void in
             if granted {
@@ -88,8 +89,6 @@ class NetworkController {
                         println("Something bad happened")
                     }
                 })
-
-                
             }
         }
     }
@@ -105,7 +104,6 @@ class NetworkController {
                 completionHandler(image: avatarImage!)
             })
         }
-        
     }
     
 }
