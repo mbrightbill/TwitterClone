@@ -101,7 +101,6 @@
 				D5888BB719E34A9500E9CE99 /* Controller Layer */,
 				D5888BB619E34A8B00E9CE99 /* View Layer */,
 				D5888BB519E34A8500E9CE99 /* Model Layer */,
-				D5888B9919E34A7700E9CE99 /* Main.storyboard */,
 				D5888BB819E34AB400E9CE99 /* Tweet.swift */,
 				D5888B9C19E34A7700E9CE99 /* Images.xcassets */,
 				D5888B9E19E34A7700E9CE99 /* LaunchScreen.xib */,
@@ -148,6 +147,7 @@
 			children = (
 				D56C131119E7087400BBA749 /* TweetCell.xib */,
 				D56C131519E882CA00BBA749 /* TweetCell.swift */,
+				D5888B9919E34A7700E9CE99 /* Main.storyboard */,
 			);
 			name = "View Layer";
 			sourceTree = "<group>";
