@@ -74,10 +74,10 @@ class NetworkController {
                     println(httpResponse)
                     switch httpResponse.statusCode {
                     case 200...299:
-                        let tweet = Tweet.parseJSONDataIntoTweets(data)
+                        let tweets = Tweet.parseJSONDataIntoTweets(data)
                         
                         NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                            completionHandler(errorDescription: nil, tweet: tweet)
+                            completionHandler(errorDescription: nil, tweet: tweets)
                         })
                     case 400...499:
                         println("this is the clients fault")
