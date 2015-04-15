@@ -24,22 +24,22 @@ class Tweet {
     
     init(twitterDictionary: NSDictionary) {
         
-        self.text = twitterDictionary["text"] as String
+        self.text = twitterDictionary["text"] as! String
         
-        self.userDictionary = twitterDictionary["user"] as NSDictionary
+        self.userDictionary = twitterDictionary["user"] as! NSDictionary
         
-        self.tweetImageString = userDictionary["profile_image_url"] as String
+        self.tweetImageString = userDictionary["profile_image_url"] as! String
         
-        self.tweetAccountName = userDictionary["name"] as String
-        self.userScreenName = userDictionary["screen_name"] as String
+        self.tweetAccountName = userDictionary["name"] as! String
+        self.userScreenName = userDictionary["screen_name"] as! String
         
         self.tweetImageURL = NSURL(string: tweetImageString)!
         self.tweetImage = UIImage(data: NSData(contentsOfURL: tweetImageURL)!)!
         
-        self.retweetCountInt = twitterDictionary["retweet_count"] as Int
+        self.retweetCountInt = twitterDictionary["retweet_count"] as! Int
         self.retweetCountString = String(retweetCountInt)
         
-        self.favoriteCountInt = twitterDictionary["favorite_count"] as Int
+        self.favoriteCountInt = twitterDictionary["favorite_count"] as! Int
         self.favoriteCountString = String(favoriteCountInt)
     }
     

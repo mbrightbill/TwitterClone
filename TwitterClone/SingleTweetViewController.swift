@@ -34,7 +34,7 @@ class SingleTweetViewController: UIViewController {
     }
     
     @IBAction func photoButtonPressed(sender: AnyObject) {
-        let userTimeLineVC = self.storyboard?.instantiateViewControllerWithIdentifier("userTimeLineVC") as UserTimeLineViewController
+        let userTimeLineVC = self.storyboard?.instantiateViewControllerWithIdentifier("userTimeLineVC") as! UserTimeLineViewController
         userTimeLineVC.selectedTweet2 = self.selectedTweet
         self.navigationController?.pushViewController(userTimeLineVC, animated: true)
                 
