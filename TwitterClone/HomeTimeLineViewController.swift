@@ -29,7 +29,7 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.networkController = appDelegate.networkController
         
         self.networkController.fetchHometimeLine { (errorDescription, tweets) -> (Void) in
@@ -76,14 +76,14 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TWEET_CELL", forIndexPath: indexPath) as TweetCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("TWEET_CELL", forIndexPath: indexPath) as! TweetCell
         let tweet = self.tweets?[indexPath.row]
         
         if tweet?.tweetImage != nil {
             cell.tweetCellImageView.image = tweet?.tweetImage
         } else {
             self.networkController.downloadUserImageForTweet(tweet!, completionHandler: { (image) -> (Void) in
-                let cellForImage = self.tableView.cellForRowAtIndexPath(indexPath) as TweetCell?
+                let cellForImage = self.tableView.cellForRowAtIndexPath(indexPath) as! TweetCell?
                 cellForImage?.tweetCellImageView.image = image
             })
         }
@@ -98,7 +98,7 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UIApp
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let singleTweetVC = self.storyboard?.instantiateViewControllerWithIdentifier("singleTweetVC") as SingleTweetViewController
+        let singleTweetVC = self.storyboard?.instantiateViewControllerWithIdentifier("singleTweetVC") as! SingleTweetViewController
         singleTweetVC.selectedTweet = tweets?[indexPath.row]
         self.navigationController?.pushViewController(singleTweetVC, animated: true)
     }

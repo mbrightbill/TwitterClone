@@ -28,7 +28,7 @@ class NetworkController {
             if granted {
                 
                 let accounts = accountStore.accountsWithAccountType(accountType)
-                self.twitterAccount = accounts.first as ACAccount?
+                self.twitterAccount = accounts.first as! ACAccount?
                 // setup our twitter request
                 let url = NSURL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
                 let twitterRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: url, parameters: nil)
@@ -65,7 +65,7 @@ class NetworkController {
             if granted {
                 println(userScreenName)
                 let accounts = accountStore.accountsWithAccountType(accountType)
-                self.twitterAccount = accounts.first as ACAccount?
+                self.twitterAccount = accounts.first as! ACAccount?
                 let url = NSURL(string: "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=\(userScreenName!)")
                 println(userScreenName)
                 let twitterRequest = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: SLRequestMethod.GET, URL: url, parameters: nil)
